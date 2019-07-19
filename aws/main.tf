@@ -41,7 +41,7 @@ resource "aws_s3_bucket" "hugo_site_bucket" {
                 "Effect": "Allow",
                 "Principal": "*",
                 "Action": "s3:GetObject",
-                "Resource": "arn:aws:s3:::${aws_s3_bucket.hugo_site_bucket.bucket}/*"
+                "Resource": "arn:aws:s3:::hugo_site_bucket/*"
             }
         ]
     }
