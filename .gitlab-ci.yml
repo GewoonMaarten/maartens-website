@@ -15,4 +15,4 @@ build-infra:
   script:
     - terraform validate aws
     - terraform plan aws
-    - terraform apply aws 
+    - terraform apply aws -auto-approve
