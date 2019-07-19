@@ -1,0 +1,4 @@
+baseUrl = "https://maartens.website"
+languageCode = "en-us"
+title = "Maartens website"
+canonifyURLs = true
