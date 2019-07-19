@@ -5,7 +5,7 @@ provider "aws" {
 
 resource "aws_lambda_layer_version" "hugo" {
     filename    = "${path.module}/lambda/layers/hugo_0.55.6.zip"
-    layer_name  = "hugo_0.55.6"
+    layer_name  = "hugo"
 
     compatible_runtimes = [ "python3.7" ]
 }
@@ -37,11 +37,15 @@ resource "aws_s3_bucket" "hugo_site_bucket" {
         "Version": "2012-10-17",
         "Statement": [
             {
-                "Sid": "PublicReadGetObject",
+                "Sid": "PublicReadForGetBucketObjects",
                 "Effect": "Allow",
                 "Principal": "*",
-                "Action": "s3:GetObject",
-                "Resource": "arn:aws:s3:::hugo_site_bucket/*"
+                "Action": [
+                    "s3:GetObject"
+                ],
+                "Resource": [
+                    "arn:aws:s3:::hugo-site-bucket/*"
+                ]
             }
         ]
     }
