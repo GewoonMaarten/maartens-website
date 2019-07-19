@@ -4,33 +4,33 @@ provider "aws" {
 }
 
 resource "aws_lambda_layer_version" "hugo" {
-    filename    = "./lambda/layers/hugo_0.55.6.zip"
+    filename    = "${path.module}/lambda/layers/hugo_0.55.6.zip"
     layer_name  = "hugo_0.55.6"
 
     compatible_runtimes = [ "python3.7" ]
 }
 
 resource "aws_lambda_layer_version" "libstdc" {
-    filename    = "./lambda/layers/libstdc.zip"
+    filename    = "${path.module}/lambda/layers/libstdc.zip"
     layer_name  = "libstdc"
     
     compatible_runtimes = [ "python3.7" ]
 }
 
 resource "aws_lambda_layer_version" "aws_cli" {
-    filename    = "./lambda/layers/aws_cli.zip"
+    filename    = "${path.module}/lambda/layers/aws_cli.zip"
     layer_name  = "aws_cli"
     
     compatible_runtimes = [ "python3.7" ]
 }
 
 resource "aws_s3_bucket" "hugo_source_bucket" {
-    bucket = "hugo_source_bucket"
+    bucket = "hugo-source-bucket"
     acl = "private"
 }
 
 resource "aws_s3_bucket" "hugo_site_bucket" {
-    bucket  = "hugo_site_bucket"
+    bucket  = "hugo-site-bucket"
     acl     = "public-read"
     policy  = <<EOF
     {
