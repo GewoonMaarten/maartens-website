@@ -1,18 +1,49 @@
- stages:
-  - build-infra
+variables:
+  GIT_SUBMODULE_STRATEGY: recursive
+  AWS_DEFAULT_REGION: eu-central-1 
+  BUCKET_NAME: maartens.website
 
-build-infra:
-  stage: build-infra
-  image:
-    name: hashicorp/terraform:light
-    entrypoint:
-      - '/usr/bin/env'
-      - 'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
-  before_script:
-    - rm -rf .terraform
-    - terraform --version
-    - terraform init aws
+stages:
+  - build
+  - deploy
+
+# build-infra:
+#   stage: build-infra
+#   image:
+#     name: hashicorp/terraform:light
+#     entrypoint:
+#       - '/usr/bin/env'
+#       - 'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+#   before_script:
+#     - rm -rf .terraform
+#     - terraform --version
+#     - terraform init aws
+#   script:
+#     - terraform validate aws
+#     - terraform plan aws
+#     - terraform apply -auto-approve aws
+
+
+build:
+  stage: build
+  image: publysher/hugo
   script:
-    - terraform validate aws
-    - terraform plan aws
-    - terraform apply -auto-approve aws
+    - hugo -s src -d public
+  artifacts:
+    paths:
+      - public
+  only:
+    - master
+
+deploy:
+  stage: deploy
+  image: "python:latest"
+  dependencies:
+    - build
+  before_script:
+    - pip install awscli
+  script:
+    - aws s3 cp public s3://${BUCKET_NAME}/--recursive
+  environment:
+    name: ${CI_COMMIT_REF_SLUG}
+    url: http://${BUCKET_NAME}.s3-website.${AWS_DEFAULT_REGION}.amazonaws.com/
