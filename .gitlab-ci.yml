@@ -42,6 +42,7 @@ deploy:
     - build
   before_script:
     - pip install awscli
+    - aws s3 rm s3://${BUCKET_NAME}/ --recursive # cleanup before continuing
   script:
     - aws s3 cp public s3://${BUCKET_NAME}/ --recursive
   environment:
