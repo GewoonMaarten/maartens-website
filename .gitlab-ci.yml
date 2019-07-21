@@ -26,7 +26,7 @@ stages:
 
 build:
   stage: build
-  image: publysher/hugo
+  image: monachus/hugo
   script:
     - hugo -s site -d ../public
   artifacts:
