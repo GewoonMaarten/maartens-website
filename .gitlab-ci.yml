@@ -28,7 +28,7 @@ build:
   stage: build
   image: publysher/hugo
   script:
-    - hugo -s src -d public
+    - hugo -s site -d ../public
   artifacts:
     paths:
       - public

@@ -13,3 +13,4 @@ $RECYCLE.BIN/
 
 # Terraform
 .terraform
+plan
