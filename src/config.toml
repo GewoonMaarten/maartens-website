@@ -2,3 +2,25 @@ baseUrl = "https://maartens.website"
 languageCode = "en-us"
 title = "Maartens website"
 canonifyURLs = true
+
+[Author]
+    name = "Maarten de Klerk"
+    title = "Junior Software Engineer"
+
+[params]
+
+    [[params.links]]
+        iconset = "fas"
+        icon = "envelope"
+        title = "E-mail"
+        url = "mailto:maarten@deklerk.dev"
+
+    [[params.links]]
+        icon = "gitlab"
+        title = "Gitlab"
+        url = "https://gitlab.com/gewoon_maarten"
+
+    [[params.links]]
+        icon = "linkedin"
+        title = "LinkedIn"
+        url = "https://www.linkedin.com/in/maarten-de-klerk/"

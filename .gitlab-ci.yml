@@ -1,4 +1,4 @@
-stages:
+ stages:
   - build-infra
 
 build-infra:

@@ -1,0 +1,71 @@
+html, body {
+  background-image: url("https://wallpapershome.com/images/pages/pic_h/577.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  height: 100%; }
+
+.sidebar {
+  position: absolute;
+  left: 0;
+  z-index: 1;
+  width: 33%;
+  max-width: 600px;
+  height: 100%;
+  background: inherit;
+  overflow: hidden; }
+  .sidebar::before {
+    content: '';
+    position: absolute;
+    background: inherit;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    filter: blur(5px);
+    box-shadow: inset 0 0 200px rgba(0, 0, 0, 0.2); }
+  .sidebar .content {
+    margin-top: 250px; }
+    .sidebar .content hr {
+      margin-top: 30px;
+      border-width: 0;
+      border-top-width: 0px;
+      border-top: 2px solid #FFF;
+      width: 20%; }
+
+.title {
+  font-family: 'Roboto Slab', serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 48px;
+  line-height: 63px;
+  color: #FFFFFF;
+  text-align: center; }
+
+.subtitle {
+  font-family: 'Roboto Slab', serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 47px;
+  color: #FFFFFF;
+  text-align: center; }
+
+.links {
+  font-family: 'Roboto Slab', serif;
+  font-size: 20px;
+  margin-top: 10px;
+  text-align: center; }
+  .links a {
+    text-decoration: none;
+    color: #FFFFFF;
+    line-height: 35px;
+    padding: 0 8px; }
+    .links a:hover {
+      color: #a5d6a7; }
+
+/*# sourceMappingURL=style.css.map */
