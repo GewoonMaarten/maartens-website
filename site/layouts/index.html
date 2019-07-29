@@ -1,21 +1,26 @@
 {{ define "main" }}
 
-<div class="sidebar">
-    <div class="content">
-        <div class="title">{{ .Site.Author.name }}</div>
-        <div class="subtitle">{{ .Site.Author.title }}</div>
-        
-        <div class="links">
-            {{- range .Site.Params.links -}}
-            <a rel="me" href="{{ .url }}" title="{{ .title }}">
-                <span class="{{ .iconset | default "fab" }} fa-{{ .icon }}"></span>
-            </a>
-            {{- end -}}
+
+<div class="main">
+    <div class="sidebar">
+        <div class="content">
+            <div class="title">{{ .Site.Author.name }}</div>
+            <div class="subtitle">{{ .Site.Author.title }}</div>
+            
+            <div class="links">
+                {{- range .Site.Params.links -}}
+                <a rel="me" href="{{ .url }}" title="{{ .title }}">
+                    <span class="{{ .iconset | default "fab" }} fa-{{ .icon }}"></span>
+                </a>
+                {{- end -}}
+            </div>
+            
+            <hr />
+            
         </div>
-        
-        <hr />
-        
     </div>
 </div>
+
+
 
 {{ end }}

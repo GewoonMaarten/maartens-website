@@ -1,22 +1,36 @@
 html, body {
-  background-image: url("https://wallpapershome.com/images/pages/pic_h/577.jpg");
+  height: 100%;
+  width: 100%;
+  margin: 0; }
+
+.main {
+  background-image: url("../img/background-sm.webp");
   background-attachment: fixed;
   background-size: cover;
   background-repeat: no-repeat;
-  display: grid;
-  align-items: center;
-  justify-content: center;
   height: 100%; }
+  @media (min-width: 768px) {
+    .main {
+      background-image: url("../img/background-md.webp"); } }
+  @media (min-width: 992px) {
+    .main {
+      background-image: url("../img/background-lg.webp"); } }
+  @media (min-width: 1200px) {
+    .main {
+      background-image: url("../img/background-xl.webp"); } }
 
 .sidebar {
   position: absolute;
   left: 0;
   z-index: 1;
-  width: 33%;
-  max-width: 600px;
+  width: 100%;
+  max-width: 100%;
   height: 100%;
   background: inherit;
   overflow: hidden; }
+  @media (min-width: 1200px) {
+    .sidebar {
+      width: 33%; } }
   .sidebar::before {
     content: '';
     position: absolute;
@@ -29,7 +43,11 @@ html, body {
     filter: blur(5px);
     box-shadow: inset 0 0 200px rgba(0, 0, 0, 0.2); }
   .sidebar .content {
-    margin-top: 250px; }
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%; }
     .sidebar .content hr {
       margin-top: 30px;
       border-width: 0;

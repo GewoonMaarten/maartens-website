@@ -1,88 +1,126 @@
+$information-sm: 576px;
+$information-md: 768px;
+$information-lg: 992px;
+$information-xl: 1200px;
+
+@mixin centerer($horizontal: true, $vertical: true) {
+  position: absolute;
+  @if ($horizontal and $vertical) {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  } @else if ($horizontal) {
+    left: 50%;
+    transform: translate(-50%, 0);
+  } @else if ($vertical) {
+    top: 50%;
+    transform: translate(0, -50%);
+  }
+}
+
 html, body {
-    background-image: url('https://wallpapershome.com/images/pages/pic_h/577.jpg');
-    background-attachment: fixed; 
-      background-size: cover; 
-    background-repeat: no-repeat;
-      display: grid;
-      align-items: center;
-      justify-content: center;
-      height: 100%;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+.main {
+  background-image: url('../img/background-sm.webp');
+
+  @media (min-width: $information-md) {
+    background-image: url('../img/background-md.webp');
+  }
+  @media (min-width: $information-lg) {
+    background-image: url('../img/background-lg.webp');
+  }
+  @media (min-width: $information-xl) {
+    background-image: url('../img/background-xl.webp');
   }
   
-  .sidebar {
-    position: absolute;
-    left: 0;
-    z-index:1;
+  background-attachment: fixed; 
+  background-size: cover; 
+  background-repeat: no-repeat;
+
+  height: 100%;
+}
+  
+.sidebar {
+  position: absolute;
+  left: 0;
+  z-index:1;
+  width: 100%;
+  max-width: 100%;
+  height:100%;
+  background: inherit;
+  overflow: hidden;
+
+  @media (min-width: $information-xl) {
     width: 33%;
-    max-width: 600px;
-    height:100%;
+  }
+  
+  &::before {
+    content: '';
+    position: absolute;
     background: inherit;
-    overflow: hidden;
-    
-    &::before {
-      content: '';
-      position: absolute;
-      background: inherit;
-      z-index: -1;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      filter: blur(5px);
-      box-shadow: inset 0 0 200px rgba(0, 0, 0, .2);
-    }
-    
-    .content {
-      margin-top: 250px;
-      
-      hr {
-        margin-top: 30px;
-        border-width: 0;
-        border-top-width: 0px;
-        border-top: 2px solid #FFF;
-        width: 20%;
-      }
-    }
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    filter: blur(5px);
+    box-shadow: inset 0 0 200px rgba(0, 0, 0, .2);
   }
   
-  .title {
-    font-family: 'Roboto Slab', serif;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 48px;
-    line-height: 63px;
-    
+  .content {
+    @include centerer();
+    width: 100%;
+
+    hr {
+      margin-top: 30px;
+      border-width: 0;
+      border-top-width: 0px;
+      border-top: 2px solid #FFF;
+      width: 20%;
+    }
+  }
+}
+
+.title {
+  font-family: 'Roboto Slab', serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 48px;
+  line-height: 63px;
+  
+  color: #FFFFFF;
+  text-align: center;
+}
+
+.subtitle {
+  font-family: 'Roboto Slab', serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 47px;
+  
+  color: #FFFFFF;
+  text-align: center;
+}
+
+.links {
+  font-family: 'Roboto Slab', serif;
+  font-size: 20px;
+  margin-top: 10px;
+  
+  text-align: center;
+  
+  a {
+    text-decoration: none;
     color: #FFFFFF;
-    text-align: center;
-  }
-  
-  .subtitle {
-    font-family: 'Roboto Slab', serif;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 20px;
-    line-height: 47px;
-    
-    color: #FFFFFF;
-    text-align: center;
-  }
-  
-  .links {
-    font-family: 'Roboto Slab', serif;
-    font-size: 20px;
-    margin-top: 10px;
-    
-    text-align: center;
-    
-    a {
-      text-decoration: none;
-      color: #FFFFFF;
-      line-height: 35px;
-      padding: 0 8px;
-      &:hover {
-        color: #a5d6a7;
-      }
+    line-height: 35px;
+    padding: 0 8px;
+    &:hover {
+      color: #a5d6a7;
     }
   }
-  
-  
+}
