@@ -1,12 +1,19 @@
 {{ define "main" }}
+    <main class="main">
 
+        <div class="background"></div>
 
-<div class="main">
-    <div class="sidebar">
-        <div class="content">
-            <div class="title">{{ .Site.Author.name }}</div>
-            <div class="subtitle">{{ .Site.Author.title }}</div>
-            
+        <div class="content"></div>
+
+        <div class="title-card">
+            <h1>
+                👋<br/>
+                Hi, my name is {{ .Site.Author.name }}
+            </h1>
+        </div>
+        
+        <div class="info-card">
+            <h2>{{ .Site.Author.title }}</h2>
             <div class="links">
                 {{- range .Site.Params.links -}}
                 <a rel="me" href="{{ .url }}" title="{{ .title }}">
@@ -14,13 +21,7 @@
                 </a>
                 {{- end -}}
             </div>
-            
             <hr />
-            
         </div>
-    </div>
-</div>
-
-
-
+    </main>
 {{ end }}

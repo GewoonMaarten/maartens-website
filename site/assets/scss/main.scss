@@ -3,77 +3,102 @@ $information-md: 768px;
 $information-lg: 992px;
 $information-xl: 1200px;
 
-@mixin centerer($horizontal: true, $vertical: true) {
-  position: absolute;
-  @if ($horizontal and $vertical) {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  } @else if ($horizontal) {
-    left: 50%;
-    transform: translate(-50%, 0);
-  } @else if ($vertical) {
-    top: 50%;
-    transform: translate(0, -50%);
-  }
-}
-
 html, body {
   height: 100%;
   width: 100%;
   margin: 0;
+  background: #434343;
+  background: radial-gradient( circle farthest-corner at 10% 20%,  #434343 0%, #000000 90% );
 }
 
 .main {
-  background-image: url('../img/background-sm.webp');
-
-  @media (min-width: $information-md) {
-    background-image: url('../img/background-md.webp');
-  }
-  @media (min-width: $information-lg) {
-    background-image: url('../img/background-lg.webp');
-  }
+  display: grid;
+  grid-template-rows:  [background-start] 5% [content-start] 5% [title-card-start] 1fr [title-card-end] 40px [info-card-start] 1fr [info-card-end] 5% [content-end] 5% [background-end];
+  grid-template-columns: [background-start] 5% [content-start] 5% [card-start] auto [card-end] 5% [content-end] 5% [background-end];
+  
   @media (min-width: $information-xl) {
-    background-image: url('../img/background-xl.webp');
+    grid-template-rows:  [background-start] 5% [content-start] 5% [title-card-start] 1fr [title-card-end] 40px [info-card-start] 1fr [info-card-end] 5% [content-end] 5% [background-end];
+    grid-template-columns: [background-start] 5% [content-start] 2% [card-start] 20% [info-card-end] 2% [content-end] 5% [background-end]  10% [card-end] auto;
+      
+    height: calc(100% - (50px * 2));
+    padding: 50px 0;
   }
   
-  background-attachment: fixed; 
-  background-size: cover; 
-  background-repeat: no-repeat;
-
   height: 100%;
-}
-  
-.sidebar {
-  position: absolute;
-  left: 0;
-  z-index:1;
   width: 100%;
-  max-width: 100%;
-  height:100%;
-  background: inherit;
-  overflow: hidden;
 
-  @media (min-width: $information-xl) {
-    width: 33%;
+  .background {
+    grid-column: background-start / background-end;
+    grid-row: background-start / background-end;
+
+    background-image: url(../img/background-crop.webp);
+    background-repeat: no-repeat;
+    background-size: cover;  
   }
-  
-  &::before {
-    content: '';
-    position: absolute;
-    background: inherit;
-    z-index: -1;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    filter: blur(5px);
-    box-shadow: inset 0 0 200px rgba(0, 0, 0, .2);
+
+  .content {  
+    grid-column: content-start / content-end;
+    grid-row: content-start / content-end;
+
+    //background: rgba(58, 58, 58, 0.15);
+    mix-blend-mode: normal;
+    backdrop-filter: blur(5px);
   }
-  
-  .content {
-    @include centerer();
-    width: 100%;
+
+  .title-card {
+    grid-column: card-start / card-end;
+    grid-row: title-card-start / title-card-end;
+
+    z-index: 1;
+
+    background: #FFFFFF;
+    padding: 30px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+
+    h1 {
+      margin: 0;
+
+      font-family: 'Roboto Slab', serif;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 2em;
+      line-height: 50px;
+      
+      color: #000000;
+
+      @media (min-width: $information-xl) {
+        font-size: 4em;
+        line-height: 95px;
+      }
+    }
+  }
+
+  .info-card {
+    grid-column: card-start;
+    grid-row:  info-card-start / info-card-end;
+
+    z-index: 1;
+
+    h2 {
+      margin: 0;
+
+      font-family: 'Roboto Slab', serif;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 20px;
+      line-height: 47px;
+      
+      color: #FFFFFF;
+      text-align: center;
+
+      @media (min-width: $information-xl) {
+        font-size: 2em;
+      }
+    }
 
     hr {
       margin-top: 30px;
@@ -82,45 +107,23 @@ html, body {
       border-top: 2px solid #FFF;
       width: 20%;
     }
-  }
-}
-
-.title {
-  font-family: 'Roboto Slab', serif;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 48px;
-  line-height: 63px;
-  
-  color: #FFFFFF;
-  text-align: center;
-}
-
-.subtitle {
-  font-family: 'Roboto Slab', serif;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 20px;
-  line-height: 47px;
-  
-  color: #FFFFFF;
-  text-align: center;
-}
-
-.links {
-  font-family: 'Roboto Slab', serif;
-  font-size: 20px;
-  margin-top: 10px;
-  
-  text-align: center;
-  
-  a {
-    text-decoration: none;
-    color: #FFFFFF;
-    line-height: 35px;
-    padding: 0 8px;
-    &:hover {
-      color: #a5d6a7;
+    
+    .links {
+      font-family: 'Roboto Slab', serif;
+      font-size: 20px;
+      margin-top: 10px;
+      
+      text-align: center;
+      
+      a {
+        text-decoration: none;
+        color: #FFFFFF;
+        line-height: 35px;
+        padding: 0 8px;
+        &:hover {
+          color: #434343;
+        }
+      }
     }
   }
 }

@@ -2,12 +2,15 @@ baseUrl = "https://maartens.website"
 languageCode = "en-us"
 title = "Maartens website"
 canonifyURLs = true
+enableRobotsTXT = true
 
 [Author]
     name = "Maarten de Klerk"
     title = "Junior Software Engineer"
 
 [params]
+
+    description = "Maarten de Klerk's personal website"
 
     [[params.links]]
         iconset = "fas"
