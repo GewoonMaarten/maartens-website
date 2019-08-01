@@ -17,13 +17,16 @@ enableRobotsTXT = true
         icon = "envelope"
         title = "E-mail"
         url = "mailto:maarten@deklerk.dev"
+        label = "Opens email to maarten@deklerk.dev"
 
     [[params.links]]
         icon = "gitlab"
         title = "Gitlab"
         url = "https://gitlab.com/gewoon_maarten"
+        label = "View my programming projects at gitlab"
 
     [[params.links]]
         icon = "linkedin"
         title = "LinkedIn"
         url = "https://www.linkedin.com/in/maarten-de-klerk/"
+        label = "Connect with me on LinkedIn"

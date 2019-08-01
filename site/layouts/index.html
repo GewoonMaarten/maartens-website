@@ -11,12 +11,12 @@
                 Hi, my name is {{ .Site.Author.name }}
             </h1>
         </div>
-        
+
         <div class="info-card">
             <h2>{{ .Site.Author.title }}</h2>
             <div class="links">
                 {{- range .Site.Params.links -}}
-                <a rel="me" href="{{ .url }}" title="{{ .title }}">
+                <a rel="me" href="{{ .url }}" title="{{ .title }}" aria-label="{{ .label }}">
                     <span class="{{ .iconset | default "fab" }} fa-{{ .icon }}"></span>
                 </a>
                 {{- end -}}
