@@ -11,7 +11,7 @@ html, body {
   background: radial-gradient( circle farthest-corner at 10% 20%,  #434343 0%, #000000 90% );
 }
 
-.main {
+main {
   display: grid;
   grid-template-rows:  [background-start] 5% [content-start] 5% [title-card-start] 1fr [title-card-end] 40px [info-card-start] 1fr [info-card-end] 5% [content-end] 5% [background-end];
   grid-template-columns: [background-start] 5% [content-start] 5% [card-start] auto [card-end] 5% [content-end] 5% [background-end];

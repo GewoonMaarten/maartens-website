@@ -5,30 +5,30 @@ html, body {
   background: #434343;
   background: radial-gradient(circle farthest-corner at 10% 20%, #434343 0%, #000000 90%); }
 
-.main {
+main {
   display: grid;
   grid-template-rows: [background-start] 5% [content-start] 5% [title-card-start] 1fr [title-card-end] 40px [info-card-start] 1fr [info-card-end] 5% [content-end] 5% [background-end];
   grid-template-columns: [background-start] 5% [content-start] 5% [card-start] auto [card-end] 5% [content-end] 5% [background-end];
   height: 100%;
   width: 100%; }
   @media (min-width: 1200px) {
-    .main {
+    main {
       grid-template-rows: [background-start] 5% [content-start] 5% [title-card-start] 1fr [title-card-end] 40px [info-card-start] 1fr [info-card-end] 5% [content-end] 5% [background-end];
       grid-template-columns: [background-start] 5% [content-start] 2% [card-start] 20% [info-card-end] 2% [content-end] 5% [background-end] 10% [card-end] auto;
       height: calc(100% - (50px * 2));
       padding: 50px 0; } }
-  .main .background {
+  main .background {
     grid-column: background-start / background-end;
     grid-row: background-start / background-end;
     background-image: url(../img/background-crop.webp);
     background-repeat: no-repeat;
     background-size: cover; }
-  .main .content {
+  main .content {
     grid-column: content-start / content-end;
     grid-row: content-start / content-end;
     mix-blend-mode: normal;
     backdrop-filter: blur(5px); }
-  .main .title-card {
+  main .title-card {
     grid-column: card-start / card-end;
     grid-row: title-card-start / title-card-end;
     z-index: 1;
@@ -38,7 +38,7 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center; }
-    .main .title-card h1 {
+    main .title-card h1 {
       margin: 0;
       font-family: 'Roboto Slab', serif;
       font-style: normal;
@@ -47,14 +47,14 @@ html, body {
       line-height: 50px;
       color: #000000; }
       @media (min-width: 1200px) {
-        .main .title-card h1 {
+        main .title-card h1 {
           font-size: 4em;
           line-height: 95px; } }
-  .main .info-card {
+  main .info-card {
     grid-column: card-start;
     grid-row: info-card-start / info-card-end;
     z-index: 1; }
-    .main .info-card h2 {
+    main .info-card h2 {
       margin: 0;
       font-family: 'Roboto Slab', serif;
       font-style: normal;
@@ -64,25 +64,25 @@ html, body {
       color: #FFFFFF;
       text-align: center; }
       @media (min-width: 1200px) {
-        .main .info-card h2 {
+        main .info-card h2 {
           font-size: 2em; } }
-    .main .info-card hr {
+    main .info-card hr {
       margin-top: 30px;
       border-width: 0;
       border-top-width: 0px;
       border-top: 2px solid #FFF;
       width: 20%; }
-    .main .info-card .links {
+    main .info-card .links {
       font-family: 'Roboto Slab', serif;
       font-size: 20px;
       margin-top: 10px;
       text-align: center; }
-      .main .info-card .links a {
+      main .info-card .links a {
         text-decoration: none;
         color: #FFFFFF;
         line-height: 35px;
         padding: 0 8px; }
-        .main .info-card .links a:hover {
+        main .info-card .links a:hover {
           color: #434343; }
 
 /*# sourceMappingURL=style.css.map */
