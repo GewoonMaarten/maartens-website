@@ -10,7 +10,3 @@ $RECYCLE.BIN/
 
 # OSX
 .DS_Store
-
-# Terraform
-.terraform
-plan
