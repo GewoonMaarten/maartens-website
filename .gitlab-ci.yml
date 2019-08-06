@@ -27,7 +27,7 @@ deploy:
   before_script:
     - pip install awscli
     - aws s3 rm s3://${BUCKET_NAME}/ --recursive # cleanup before continuing
-    - aws cloudfront create-invalidation --distribution-id=${CLOUDFRONT_DISTRIBUTION} --paths "/*" #clear cloudfront cache
+    - aws cloudfront create-invalidation --distribution-id ${CLOUDFRONT_DISTRIBUTION} --paths "/*" #clear cloudfront cache
   script:
     - aws s3 cp public s3://${BUCKET_NAME}/ --recursive
   environment:
