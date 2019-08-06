@@ -9,33 +9,48 @@ html, body {
   margin: 0;
 }
 
-main {
-  height: inherit;
+.background {
+  position: absolute;
+  top:0;
+  left: 0;
+  right: 0;
+
+  height: 50vh;
+  max-height: 300px;
+  object-fit: cover;
+
   width: inherit;
 
-  overflow: hidden;
-
-  background-image: url(../img/background.webp);
-  background-repeat: no-repeat;
-  background-position-x: center;
-  background-position-y: top;
-  background-size: 230%;
+  z-index: -1;
 
   @media (min-width: $information-md) {
-    background-size: contain;
-  }  
-  
+    height: unset;
+    max-height: unset;
+    object-fit: unset;
+  }
+}
+
+main {
+  width: inherit;
+
+  padding-top: 210px;
+
+  @media (min-width: $information-xl) {
+    padding-top: 25vw;
+  }
+
   header {
     display: flex;
-    justify-content: space-between; 
+    justify-content: space-between;
     align-items: center;
 
-    width: 90%;
-    height: 25%;
+    width: 90vw;
+    max-width: 1500px;
+    height: 25vh;
     min-height: 175px;
     max-height: 400px;
 
-    margin-top: 210px;
+    margin-top: 0;
     margin-bottom: 40px;
     margin-left: auto;
     margin-right: auto;
@@ -45,7 +60,6 @@ main {
 
     @media (min-width: $information-xl) {
       min-height: 300px;
-      margin-top: 25%;
     }
 
     h1 {
@@ -56,7 +70,7 @@ main {
       font-weight: bold;
       font-size: 2em;
       line-height: 50px;
-      
+
       color: #000000;
 
       @media (min-width: $information-xl) {
@@ -71,7 +85,7 @@ main {
 
       @media (min-width: $information-md) {
         display: block;
-      } 
+      }
     }
   }
 
@@ -85,7 +99,7 @@ main {
       font-weight: normal;
       font-size: 20px;
       line-height: 47px;
-      
+
       color: black;
 
       text-align: center;
@@ -105,7 +119,7 @@ main {
       width: 20%;
       max-width: 100px;
     }
-    
+
     .links {
       font-family: 'Roboto Slab', serif;
       font-size: 20px;
@@ -114,7 +128,7 @@ main {
       color: black;
 
       text-align: center;
-      
+
       a {
         text-decoration: none;
         line-height: 35px;

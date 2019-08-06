@@ -3,27 +3,38 @@ html, body {
   width: 100%;
   margin: 0; }
 
-main {
-  height: inherit;
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50vh;
+  max-height: 300px;
+  object-fit: cover;
   width: inherit;
-  overflow: hidden;
-  background-image: url(../img/background.webp);
-  background-repeat: no-repeat;
-  background-position-x: center;
-  background-position-y: top;
-  background-size: 230%; }
+  z-index: -1; }
   @media (min-width: 768px) {
+    .background {
+      height: unset;
+      max-height: unset;
+      object-fit: unset; } }
+
+main {
+  width: inherit;
+  padding-top: 210px; }
+  @media (min-width: 1200px) {
     main {
-      background-size: contain; } }
+      padding-top: 25vw; } }
   main header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 90%;
-    height: 25%;
+    width: 90vw;
+    max-width: 1500px;
+    height: 25vh;
     min-height: 175px;
     max-height: 400px;
-    margin-top: 210px;
+    margin-top: 0;
     margin-bottom: 40px;
     margin-left: auto;
     margin-right: auto;
@@ -31,8 +42,7 @@ main {
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25); }
     @media (min-width: 1200px) {
       main header {
-        min-height: 300px;
-        margin-top: 25%; } }
+        min-height: 300px; } }
     main header h1 {
       margin: 0 0 0 20px;
       font-family: 'Roboto Slab', serif;
