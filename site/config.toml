@@ -7,6 +7,7 @@ enableRobotsTXT = true
 [Author]
     name = "Maarten de Klerk"
     title = "Junior Software Engineer"
+    avatar = "../img/profile-pic.webp"
 
 [params]
 

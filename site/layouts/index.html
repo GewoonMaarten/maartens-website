@@ -1,13 +1,11 @@
 {{ define "main" }}
     <main>
-        <div class="background"></div>
-        <div class="content"></div>
-        
-        <header class="title-card">
+        <header>
             <h1>
                 👋<br/>
-                Hi, my name is {{ .Site.Author.name }}
+                Hi, my name is {{ .Site.Author.name }}                
             </h1>
+            <img src="{{ .Site.Author.avatar }}" alt="">
         </header>
 
         <section class="info-card">
