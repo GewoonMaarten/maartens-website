@@ -2,27 +2,11 @@ variables:
   GIT_SUBMODULE_STRATEGY: recursive
   AWS_DEFAULT_REGION: eu-central-1 
   BUCKET_NAME: maartens.website
+  CLOUDFRONT_DISTRIBUTION: E2ZELB92G50031
 
 stages:
   - build
   - deploy
-
-# build-infra:
-#   stage: build-infra
-#   image:
-#     name: hashicorp/terraform:light
-#     entrypoint:
-#       - '/usr/bin/env'
-#       - 'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
-#   before_script:
-#     - rm -rf .terraform
-#     - terraform --version
-#     - terraform init aws
-#   script:
-#     - terraform validate aws
-#     - terraform plan aws
-#     - terraform apply -auto-approve aws
-
 
 build:
   stage: build
@@ -43,6 +27,7 @@ deploy:
   before_script:
     - pip install awscli
     - aws s3 rm s3://${BUCKET_NAME}/ --recursive # cleanup before continuing
+    - aws cloudfront create-invalidation --distribution-id=${CLOUDFRONT_DISTRIBUTION} --paths "/*" #clear cloudfront cache
   script:
     - aws s3 cp public s3://${BUCKET_NAME}/ --recursive
   environment:
