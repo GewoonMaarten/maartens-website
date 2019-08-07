@@ -9,7 +9,7 @@ html, body {
   left: 0;
   right: 0;
   height: 50vh;
-  max-height: 300px;
+  max-height: 220px;
   object-fit: cover;
   width: inherit;
   z-index: -1; }
@@ -21,10 +21,10 @@ html, body {
 
 main {
   width: inherit;
-  padding-top: 210px; }
-  @media (min-width: 1200px) {
+  padding-top: 30vw; }
+  @media (min-width: 576px) {
     main {
-      padding-top: 25vw; } }
+      padding-top: 20vw; } }
   main header {
     display: flex;
     justify-content: space-between;

@@ -16,7 +16,7 @@ html, body {
   right: 0;
 
   height: 50vh;
-  max-height: 300px;
+  max-height: 220px;
   object-fit: cover;
 
   width: inherit;
@@ -33,10 +33,10 @@ html, body {
 main {
   width: inherit;
 
-  padding-top: 210px;
+  padding-top: 30vw;
 
-  @media (min-width: $information-xl) {
-    padding-top: 25vw;
+  @media (min-width: $information-sm) {
+    padding-top: 20vw;
   }
 
   header {
