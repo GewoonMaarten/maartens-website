@@ -1,23 +1,55 @@
 {{ define "main" }}
-    <img class="background" src="../img/background.webp" alt="">
-    <main>
-        <header>
-            <h1>
-                👋<br/>
-                Hi, my name is {{ .Site.Author.name }}                
-            </h1>
-            <img src="{{ .Site.Author.avatar }}" alt="">
-        </header>
-        <section class="info-card">
-            <h2>{{ .Site.Author.title }}</h2>
-            <div class="links">
-                {{- range .Site.Params.links -}}
-                <a rel="me" href="{{ .url }}" title="{{ .title }}" aria-label="{{ .label }}">
-                    <span class="{{ .iconset | default "fab" }} fa-{{ .icon }}"></span>
-                </a>
-                {{- end -}}
-            </div>
-            <hr />
-        </section>
-    </main>
+<img
+  class="background"
+  src="../img/jamie-street--7ip4yX5P6Q-unsplash.jpg"
+  alt=""
+/>
+<div class="title-container">
+  <h1>
+    Site under construction.
+  </h1>
+</div>
+
+<div style="position: absolute; bottom: 10px; right: 10px;">
+  <a
+    style="
+      background-color: black;
+      color: white;
+      text-decoration: none;
+      padding: 4px 6px;
+      font-family: -apple-system, BlinkMacSystemFont, 'San Francisco',
+        'Helvetica Neue', Helvetica, Ubuntu, Roboto, Noto, 'Segoe UI', Arial,
+        sans-serif;
+      font-size: 12px;
+      font-weight: bold;
+      line-height: 1.2;
+      display: inline-block;
+      border-radius: 3px;
+    "
+    href="https://unsplash.com/@jamie452?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge"
+    target="_blank"
+    rel="noopener noreferrer"
+    title="Download free do whatever you want high-resolution photos from Jamie Street"
+    ><span style="display: inline-block; padding: 2px 3px;"
+      ><svg
+        xmlns="http://www.w3.org/2000/svg"
+        style="
+          height: 12px;
+          width: auto;
+          position: relative;
+          vertical-align: middle;
+          top: -2px;
+          fill: white;
+        "
+        viewBox="0 0 32 32"
+      >
+        <title>unsplash-logo</title>
+        <path
+          d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"
+        ></path></svg></span
+    ><span style="display: inline-block; padding: 2px 3px;"
+      >Jamie Street</span
+    ></a
+  >
+</div>
 {{ end }}
