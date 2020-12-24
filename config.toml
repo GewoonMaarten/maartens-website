@@ -1,0 +1,8 @@
+baseUrl = "https://maartens.website"
+languageCode = "en-us"
+title = "Maartens website"
+canonifyURLs = true
+enableRobotsTXT = true
+
+[params]
+    description = "Maarten de Klerk's personal website"

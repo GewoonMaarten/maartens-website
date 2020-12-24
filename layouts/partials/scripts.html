@@ -1,0 +1,4 @@
+<script defer async src="https://kit.fontawesome.com/bf0c06ab52.js" type="text/javascript"></script>
+
+{{ $built := resources.Get "js/background.js" | js.Build "bundle.js" | resources.Minify | resources.Fingerprint }}
+<script defer async src="{{ $built.RelPermalink }}" type="text/javascript" integrity="{{ $built.Data.Integrity }}"></script>

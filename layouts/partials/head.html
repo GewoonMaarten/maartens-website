@@ -16,13 +16,9 @@
     </title>
 
     <!-- CSS -->
-    {{- $inServerMode	:= .Site.IsServer }}
-    {{- $cssTarget		:= "css/style.css" }}
-    {{- $cssOptions		:= cond ($inServerMode) (dict "targetPath" $cssTarget "enableSourceMap" true) (dict "targetPath" $cssTarget "outputStyle" "compressed") }}
-    {{- $style			:= resources.Get "scss/main.scss" | resources.ExecuteAsTemplate "style.main.scss" . | toCSS $cssOptions }}
-    <link rel="stylesheet" href="{{ $style.RelPermalink }}">
-
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap" rel="stylesheet">
+    {{ $sass := resources.Get "scss/main.scss" }}
+    {{ $style := $sass | resources.ToCSS | resources.Minify | resources.Fingerprint}}
+    <link href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}" rel="stylesheet">
 
     <!-- Favicon -->
     <!-- <link rel="apple-touch-icon" sizes="180x180" href="{{ "apple-touch-icon.png" | relURL }}">
