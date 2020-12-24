@@ -1,0 +1,20 @@
+{
+  "name": "maartens-website",
+  "version": "1.0.0",
+  "description": "My website",
+  "private": true,
+  "scripts": {
+    "build": "hugo --minify",
+    "watch": "hugo server -w",
+    "start": "npm run watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GewoonMaarten/maartens-website"
+  },
+  "author": "Maarten de Klerk <maarten@deklerk.dev>",
+  "license": "MIT",
+  "dependencies": {
+    "@svgdotjs/svg.js": "^3.0.16"
+  }
+}
