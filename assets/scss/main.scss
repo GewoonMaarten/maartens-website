@@ -38,6 +38,9 @@ body {
     font-family: $fira-medium;
     margin: 0 0 25px 0;
 
+    @media (max-width: $information-lg) {
+      font-size: 40px;
+    }
     @media (max-width: $information-sm) {
       font-size: 25px;
     }
@@ -53,11 +56,23 @@ body {
       font-size: 24px;
       font-family: $fira-regular;
       margin: 10px 0;
+
+      @media (max-width: $information-sm) {
+        font-size: 15px;
+      }
     }
   
     a {
       color: #FFEB39;
     }
+
+    @media (max-width: $information-sm) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: $information-md) {
+    margin: 50px 0 0 50px;
   }
 }
 
