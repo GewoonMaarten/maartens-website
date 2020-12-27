@@ -18,7 +18,6 @@
     <link rel="prefetch" as="font" type="font/woff" href="https://cdn.jsdelivr.net/gh/tonsky/FiraCode@5/distr/woff/FiraCode-Regular.woff">
     <link rel="prefetch" as="font" type="font/woff2" href="https://cdn.jsdelivr.net/gh/tonsky/FiraCode@5/distr/woff2/FiraCode-Medium.woff2">
     <link rel="prefetch" as="font" type="font/woff" href="https://cdn.jsdelivr.net/gh/tonsky/FiraCode@5/distr/woff/FiraCode-Medium.woff">
-    
     {{ $style := resources.Get "scss/main.scss" | toCSS | minify }}
     <style>{{ $style.Content | safeCSS }}</style>
     <link href="{{ with .OutputFormats.Get "RSS" }}{{ .RelPermalink }}{{ end }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
