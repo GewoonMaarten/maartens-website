@@ -2,38 +2,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {{- if .IsHome }}
-        <meta name="description" content="{{ .Site.Params.Description }}">
+    <meta name="description" content="{{ .Site.Params.Description }}">
     {{- else if .Description }}
-        <meta name="description" content="{{ .Description }}">
+    <meta name="description" content="{{ .Description }}">
     {{- end }}
-
     <title>
-        {{- if .IsHome }}
-            {{ .Site.Title }}
-        {{- else }}
-            {{ .Title }} &middot; {{ .Site.Title }}
-        {{- end }}
+    {{- if .IsHome }}
+        {{ .Site.Title }}
+    {{- else }}
+        {{ .Title }} &middot; {{ .Site.Title }}
+    {{- end }}
     </title>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net/gh/tonsky/FiraCode@5/distr">
+    <link rel="prefetch" as="font" type="font/woff2" href="https://cdn.jsdelivr.net/gh/tonsky/FiraCode@5/distr/woff2/FiraCode-Regular.woff2">
+    <link rel="prefetch" as="font" type="font/woff" href="https://cdn.jsdelivr.net/gh/tonsky/FiraCode@5/distr/woff/FiraCode-Regular.woff">
+    <link rel="prefetch" as="font" type="font/woff2" href="https://cdn.jsdelivr.net/gh/tonsky/FiraCode@5/distr/woff2/FiraCode-Medium.woff2">
+    <link rel="prefetch" as="font" type="font/woff" href="https://cdn.jsdelivr.net/gh/tonsky/FiraCode@5/distr/woff/FiraCode-Medium.woff">
     
-    <!-- CSS -->
-    <link rel="preconnect" href="https://cdn.jsdelivr.net/gh/tonsky/FiraCode@4/distr">
-    <link rel="preload" as="font" type="font/woff2" href="https://cdn.jsdelivr.net/gh/tonsky/FiraCode@5/distr/woff2/FiraCode-Regular.woff2" crossorigin>
-    <link rel="preload" as="font" type="font/woff" href="https://cdn.jsdelivr.net/gh/tonsky/FiraCode@5/distr/woff/FiraCode-Regular.woff" crossorigin>
-    <link rel="preload" as="font" type="font/woff2" href="https://cdn.jsdelivr.net/gh/tonsky/FiraCode@5/distr/woff2/FiraCode-Medium.woff2" crossorigin>
-    <link rel="preload" as="font" type="font/woff" href="https://cdn.jsdelivr.net/gh/tonsky/FiraCode@5/distr/woff/FiraCode-Medium.woff" crossorigin>
-
     {{ $style := resources.Get "scss/main.scss" | toCSS | minify }}
     <style>{{ $style.Content | safeCSS }}</style>
-
-    <!-- Favicon -->
-    <!-- <link rel="apple-touch-icon" sizes="180x180" href="{{ "apple-touch-icon.png" | relURL }}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ "favicon-32x32.png" | relURL }}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ "favicon-16x16.png" | relURL }}">
-    <link rel="manifest" href="{{ "site.webmanifest" | relURL }}"> -->
-
-    <!-- RSS -->
     <link href="{{ with .OutputFormats.Get "RSS" }}{{ .RelPermalink }}{{ end }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
-
     {{ if hugo.Environment | eq "production" }}
         {{ template "_internal/google_analytics_async.html" . }}
     {{ end }}

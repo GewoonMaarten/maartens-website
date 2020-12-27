@@ -4,6 +4,7 @@ title = "Maartens website"
 canonifyURLs = true
 enableRobotsTXT = true
 relativeURLs = true
+enableGitInfo = true
 
 [params]
     description = "Maarten de Klerk's personal website"
