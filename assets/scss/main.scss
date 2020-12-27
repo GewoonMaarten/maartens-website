@@ -3,6 +3,23 @@ $information-md: 768px;
 $information-lg: 992px;
 $information-xl: 1200px;
 
+@font-face {
+  font-family: 'Fira Code';
+  src: url('https://cdn.jsdelivr.net/gh/tonsky/FiraCode@4/distr/woff2/FiraCode-Regular.woff2') format('woff2'),
+    url("https://cdn.jsdelivr.net/gh/tonsky/FiraCode@4/distr/woff/FiraCode-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Fira Code';
+  src: url('https://cdn.jsdelivr.net/gh/tonsky/FiraCode@4/distr/woff2/FiraCode-Medium.woff2') format('woff2'),
+    url("https://cdn.jsdelivr.net/gh/tonsky/FiraCode@4/distr/woff/FiraCode-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
+
 html,
 body {
   height: 100%;
@@ -32,7 +49,7 @@ body {
   h1 {
     color: white;
     font-size: 64px;
-    font-weight: normal;
+    font-weight: 500;
     font-family: 'Fira Code', monospace;
     margin: 0 0 25px 0;
     width: max-content;
