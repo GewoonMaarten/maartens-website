@@ -3,17 +3,6 @@ $information-md: 768px;
 $information-lg: 992px;
 $information-xl: 1200px;
 
-@font-face {
-  font-family: 'Fira Code';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url(https://fonts.gstatic.com/s/firacode/v9/uU9eCBsR6Z2vfE9aq3bL0fxyUs4tcw4W_D1sJV37Nv7g.woff2) format('woff2');
-  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
-}
-
-$fira-medium: 'Fira Code', monospace;
-
 html,
 body {
   height: 100%;
@@ -44,7 +33,7 @@ body {
     color: white;
     font-size: 64px;
     font-weight: normal;
-    font-family: $fira-medium;
+    font-family: 'Fira Code', monospace;
     margin: 0 0 25px 0;
     width: max-content;
 
@@ -59,14 +48,18 @@ body {
   .subtitle-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    gap: 0 15px;
     max-width: 888px;
   
     p {
       color: white;
       font-size: 24px;
-      font-family: $fira-medium;
-      margin: 10px 5px;
+      font-family: 'Fira Code', monospace;
+      margin: 10px 0;
 
+      @media (max-width: $information-md) {
+        font-size: 20px;
+      }
       @media (max-width: $information-sm) {
         font-size: 15px;
       }

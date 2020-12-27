@@ -18,7 +18,9 @@
     <!-- CSS -->
     {{ $style := resources.Get "scss/main.scss" | toCSS | minify }}
     <style>{{ $style.Content | safeCSS }}</style>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/tonsky/FiraCode@4/distr/fira_code.css">
+    
     <!-- Favicon -->
     <!-- <link rel="apple-touch-icon" sizes="180x180" href="{{ "apple-touch-icon.png" | relURL }}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{ "favicon-32x32.png" | relURL }}">
