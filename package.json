@@ -14,7 +14,5 @@
   },
   "author": "Maarten de Klerk <maarten@deklerk.dev>",
   "license": "MIT",
-  "dependencies": {
-    "@svgdotjs/svg.js": "^3.0.16"
-  }
+  "dependencies": {}
 }

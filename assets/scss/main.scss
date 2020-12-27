@@ -68,10 +68,10 @@ body {
       font-family: 'Fira Code', monospace;
       margin: 10px 0;
 
-      @media (max-width: $information-md) {
-        font-size: 20px;
+      @media (max-width: $information-lg) {
+        font-size: 18px;
       }
-      @media (max-width: $information-sm) {
+      @media (max-width: $information-md) {
         font-size: 15px;
       }
     }
