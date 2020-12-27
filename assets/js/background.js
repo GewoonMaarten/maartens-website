@@ -2,8 +2,6 @@ import { SVG } from '@svgdotjs/svg.js'
 
 const background_ele = document.getElementById('background')
 const svg = SVG().addTo(background_ele).size('100%', '100%')
-// values derived through experimentation
-const density_multiplier = 0.015
 
 /**
  * Generates a random number between `min` and `max`
@@ -16,48 +14,51 @@ const getRandomNumber = (min, max) =>
 }
 
 /**
- * Generates a random position on the body, but keeps out of bouding box of the `forbidden_element`
- * @param {HTMLElement} element element to place
- * @param {HTMLElement} forbidden_element element to avoid placing `element` on or around
- * @param {number} max_tries max number of tries to find a random position. Default is 10
- * @param {number} p extra padding around `forbidden_element`. Default is 50
- * @returns x and y coords in array, where the first item is x
+ * Generate a randomized grid
+ * @param {number} density grid density ad percentage
+ * @param {number} max_width max width of the grid
+ * @param {number} max_height max height of the grid in pixels
+ * @param {number} rand_offset max amount of random offset for each point on the grid
+ * @param {HTMLElement} forbidden_element element to keep out of
+ * @param {number} padding extra padding in pixels for the keepout area of `forbidden_element`
+ * @returns a list of position in the form of [x, y]
  */
-const getRandomPostion = (element, forbidden_element, max_tries = 10, p = 50) => 
+const generateGrid = (density, max_width, max_height, rand_offset, forbidden_element, padding = 50) => 
 {
-  const width = element.getBoundingClientRect().width
-  const height = element.getBoundingClientRect().height
-  const b = width > height ? width : height
-
-  const x_min = b
-  const y_min = b
-  const x_max = background_ele.getBoundingClientRect().width - b
-  const y_max = background_ele.getBoundingClientRect().height - b
+  let grid = []
 
   const bouding_box = forbidden_element.getBoundingClientRect()
 
-  let random_x = 0
-  let random_y = 0
+  const number_of_points_x = Math.floor(max_width * density)
+  const number_of_points_y = Math.floor(max_height * density)
 
-  let tries = 0
-  do
+  const offset_x = Math.floor((max_width / number_of_points_x) / 2)
+  const offset_y = Math.floor((max_height / number_of_points_y) / 2)
+
+  let pos_x, pos_y, rand_offset_x, rand_offset_y
+  for (let i = 0; i < number_of_points_x; i++)
   {
-    random_x = getRandomNumber(x_min, x_max)
-    random_y = getRandomNumber(y_min, y_max)
-
-    if (tries === max_tries)
+    for (let j = 0; j < number_of_points_y; j++)
     {
-      console.error('Screen too small')
-      return [random_x,random_y]
-    }
-    tries++
-  } 
-  while (random_x >= bouding_box.x - b - p &&
-         random_x <= bouding_box.x + bouding_box.width + b + p &&
-         random_y >= bouding_box.y - b - p &&
-         random_y <= bouding_box.y + bouding_box.height + b + p)
+      rand_offset_x = getRandomNumber(-rand_offset, rand_offset)
+      rand_offset_y = getRandomNumber(-rand_offset, rand_offset)
 
-	return [random_x, random_y]
+      pos_x = i * (max_width / number_of_points_x) + offset_x + rand_offset_x
+      pos_y = j * (max_height / number_of_points_y) + offset_y + rand_offset_y
+
+      if (pos_x > bouding_box.x - padding && 
+          pos_x < bouding_box.x + bouding_box.width + padding &&
+          pos_y > bouding_box.y - padding && 
+          pos_y < bouding_box.y + bouding_box.height + padding)
+      {
+        continue;
+      }
+
+      grid.push([pos_x, pos_y])
+    }
+  }
+
+  return grid
 }
 
 /**
@@ -108,8 +109,12 @@ const generateGradients = () =>
  */
 const generateShapes = () =>
 {
+  const max_width = background_ele.getBoundingClientRect().width
+  const max_height = background_ele.getBoundingClientRect().height
+
+  const keep_out_ele = document.getElementsByClassName('container')[0]
+
   const gradients = generateGradients()
-  const container = document.getElementsByClassName('container')[0]
   const paths = [
     'M0 64 L32 64 L16 0 Z',
     'M2 4 L26 52 L40 26 L38 4 Z',
@@ -124,33 +129,29 @@ const generateShapes = () =>
     // 'M27.6132 4.65186C31.8947 9.73476 25.0316 10.9181 23.5562 9.44375C21.2212 7.47797 15.7477 2.87574 9.54706 9.0752C4.3861 14.2352 7.08974 20.624 11.391 21.9755C16.9949 23.7447 20.1164 19.0268 20.9766 16.4467C23.5574 10.5493 28.2576 14.7998 27.2442 18.2896C24.5897 27.4306 17.5353 29.2245 14.3399 28.9788C1.96919 28.0279 -2.19748 18.6401 1.06805 9.44359C5.12531 -1.98268 21.7143 -2.35114 27.6132 4.65186Z'
   ]
   const radi =  [10, 15, 20]
-  const density = (
-    background_ele.getBoundingClientRect().width * 
-    background_ele.getBoundingClientRect().height) * 
-    0.000001 * 
-    density_multiplier
 
-  for (let i = 0; i < 5000 * density; i++)
-  {
+  dots_grid = generateGrid(0.01, max_width, max_height, 50, keep_out_ele)
+  dots_grid.forEach(pos => {
     const radius = radi[getRandomNumber(0, radi.length)]
-    const x = svg.circle(radius).fill('#FFFFFF')
-    x.transform({
-      position: getRandomPostion(x.node, container),
-      rotate: getRandomNumber(0, 360),
-    })
-  }
+    svg.circle(radius)
+      .fill('#FFFFFF')
+      .transform({
+        position: pos,
+      })
+  })
 
-  for (let i = 0; i < 1000 * density; i++)
-  {
+  shapes_grid = generateGrid(0.005, max_width, max_height, 100, keep_out_ele)
+  shapes_grid.forEach(pos => {
     const gradient = gradients[getRandomNumber(0, gradients.length)]
     const path = paths[getRandomNumber(0, paths.length)]
-    const x = svg.path(path).fill(gradient)
-    x.transform({
-      position: getRandomPostion(x.node, container),
-      rotate: getRandomNumber(0, 360),
-      scale: 2
-    })
-  }
+    svg.path(path)
+      .fill(gradient)
+      .transform({
+        position: pos,
+        rotate: getRandomNumber(0, 360),
+        scale: 2
+      })
+  })
 }
 
 generateShapes()
