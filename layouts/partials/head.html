@@ -1,6 +1,6 @@
 <head>
     <meta charset="UTF-8">
-    <link rel="preload"href="https://cdn.jsdelivr.net/gh/tonsky/FiraCode@5/distr/woff2/FiraCode-Regular.woff2"  as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="https://cdn.jsdelivr.net/gh/tonsky/FiraCode@5/distr/woff2/FiraCode-Regular.woff2" as="font" type="font/woff2" crossorigin />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {{- if .IsHome }}
     <meta name="description" content="{{ .Site.Params.Description }}">
@@ -17,7 +17,4 @@
     {{ $style := resources.Get "scss/main.scss" | toCSS | minify }}
     <style>{{ $style.Content | safeCSS }}</style>
     <link href="{{ with .OutputFormats.Get "RSS" }}{{ .RelPermalink }}{{ end }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
-    {{ if hugo.Environment | eq "production" }}
-        {{ template "_internal/google_analytics_async.html" . }}
-    {{ end }}
 </head>
