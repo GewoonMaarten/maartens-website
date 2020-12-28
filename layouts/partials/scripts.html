@@ -1,5 +1,3 @@
-<script>0</script>
-<!-- <script defer async src="https://kit.fontawesome.com/bf0c06ab52.js" type="text/javascript"></script> -->
 {{ $opts := dict "targetPath" "main.js" "minify" true}}
 {{ $built := resources.Get "js/main.js" | js.Build $opts | resources.Fingerprint }}
-<script defer async src="{{ $built.RelPermalink }}" type="text/javascript" integrity="{{ $built.Data.Integrity }}" crossorigin="anonymous"></script>
+<script>{{ $built.Content | safeJS }}</script>
