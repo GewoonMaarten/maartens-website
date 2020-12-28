@@ -3,7 +3,7 @@ FROM amazonlinux:2
 ENV VERSION_HUGO=0.79.1
 ENV VERSION_NODE=14.15.3
 
-# Install Curl, Git, OpenSSL (AWS Amplify requirements) and tar (required to install hugo)
+# Install Curl, Git, OpenSSL (AWS Amplify requirements) and tar (required to install Hugo)
 RUN touch ~/.bashrc
 RUN yum -y update && \
     yum -y install \
@@ -25,11 +25,5 @@ RUN curl -OL https://github.com/gohugoio/hugo/releases/download/v${VERSION_HUGO}
     tar -xf hugo_extended_${VERSION_HUGO}_Linux-64bit.tar.gz hugo -C / && \
     mv /hugo /usr/bin/hugo && \
     rm -rf hugo_extended${VERSION_HUGO}_Linux-64bit.tar.gz
-
-# Configure environment
-RUN echo export PATH="\
-    /root/.nvm/versions/node/${VERSION_NODE}/bin:\
-    $PATH" >> ~/.bashrc && \
-    echo "nvm use ${VERSION_NODE} 1> /dev/null" >> ~/.bashrc
 
 ENTRYPOINT [ "bash", "-c" ]
