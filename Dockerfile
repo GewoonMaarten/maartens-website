@@ -24,6 +24,6 @@ RUN /bin/bash -c ". ~/.nvm/nvm.sh && \
 RUN curl -OL https://github.com/gohugoio/hugo/releases/download/v${VERSION_HUGO}/hugo_extended_${VERSION_HUGO}_Linux-64bit.tar.gz && \
     tar -xf hugo_extended_${VERSION_HUGO}_Linux-64bit.tar.gz hugo -C / && \
     mv /hugo /usr/bin/hugo && \
-    rm -rf hugo_extended${VERSION_HUGO}_Linux-64bit.tar.gz
+    rm -rf hugo_extended_${VERSION_HUGO}_Linux-64bit.tar.gz
 
 ENTRYPOINT [ "bash", "-c" ]
