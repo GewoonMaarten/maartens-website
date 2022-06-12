@@ -1,20 +1,19 @@
 <head>
-    <meta charset="UTF-8">
-    <link rel="preload" href="https://cdn.jsdelivr.net/gh/tonsky/FiraCode@5/distr/woff2/FiraCode-Regular.woff2" as="font" type="font/woff2" crossorigin />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {{- if .IsHome }}
-    <meta name="description" content="{{ .Site.Params.Description }}">
-    {{- else if .Description }}
-    <meta name="description" content="{{ .Description }}">
-    {{- end }}
-    <title>
-    {{- if .IsHome }}
-    {{ .Site.Title }}
-    {{- else }}
-    {{ .Title }} &middot; {{ .Site.Title }}
-    {{- end }}
-    </title>
-    {{ $style := resources.Get "scss/main.scss" | toCSS | minify }}
-    <style>{{ $style.Content | safeCSS }}</style>
-    <link href="{{ with .OutputFormats.Get "RSS" }}{{ .RelPermalink }}{{ end }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  {{- if .IsHome }}
+  <meta name="description" content="{{ .Site.Params.Description }}" />
+  {{- else if .Description }}
+  <meta name="description" content="{{ .Description }}" />
+  {{- end }}
+  <title>
+    {{- if .IsHome }} {{ .Site.Title }} {{- else }} {{ .Title }} &middot; {{
+    .Site.Title }} {{- end }}
+  </title>
+  {{ $style := resources.Get "scss/main.scss" | toCSS | minify }}
+  <style>
+    {{ $style.Content | safeCSS }}
+  </style>
+  <link href="{{ with .OutputFormats.Get "RSS" }}{{ .RelPermalink }}{{ end }}"
+  rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
 </head>
