@@ -7,8 +7,8 @@
   <meta name="description" content="{{ .Description }}" />
   {{- end }}
   <title>
-    {{- if .IsHome }} {{ .Site.Title }} {{- else }} {{ .Title }} &middot; {{
-    .Site.Title }} {{- end }}
+    {{- if .IsHome }} {{ .Site.Title }} {{- else }} {{ .Title }} &middot;
+    {{.Site.Title }} {{- end }}
   </title>
   {{ $style := resources.Get "scss/main.scss" | toCSS | minify }}
   <style>
