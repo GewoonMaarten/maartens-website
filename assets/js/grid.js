@@ -20,7 +20,7 @@ export function generateGrid(
 ) {
   let grid = [];
 
-  const bouding_box = forbidden_element.getBoundingClientRect();
+  const bounding_box = forbidden_element.getBoundingClientRect();
 
   const number_of_points_x = Math.floor(max_width * density);
   const number_of_points_y = Math.floor(max_height * density);
@@ -38,10 +38,10 @@ export function generateGrid(
       pos_y = j * (max_height / number_of_points_y) + offset_y + rand_offset_y;
 
       if (
-        pos_x > bouding_box.x - padding &&
-        pos_x < bouding_box.x + bouding_box.width + padding &&
-        pos_y > bouding_box.y - padding &&
-        pos_y < bouding_box.y + bouding_box.height + padding
+        pos_x > bounding_box.x - padding &&
+        pos_x < bounding_box.x + bounding_box.width + padding &&
+        pos_y > bounding_box.y - padding &&
+        pos_y < bounding_box.y + bounding_box.height + padding
       ) {
         continue;
       }
@@ -51,4 +51,4 @@ export function generateGrid(
   }
 
   return grid;
-};
+}
