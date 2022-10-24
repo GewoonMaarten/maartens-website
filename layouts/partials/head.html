@@ -16,4 +16,16 @@
   </style>
   <link href="{{ with .OutputFormats.Get "RSS" }}{{ .RelPermalink }}{{ end }}"
   rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
+  <link
+    rel="icon"
+    type="image/png"
+    sizes="48x48"
+    href="/images/favicon-48x48.png"
+  />
+  <link
+    rel="icon"
+    type="image/png"
+    sizes="192x192"
+    href="/images/favicon-192x192.png"
+  />
 </head>
