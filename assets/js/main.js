@@ -5,7 +5,8 @@ import { getRandomNumber } from "./utils";
 const svg = document.getElementsByTagName("svg")[0];
 const keep_out_ele = document.getElementsByClassName("container")[0];
 
-const radi = [10, 15, 20];
+const radi = [5, 7, 10];
+const colors = ["#00FF00", "#FFFF00", "#FF0000", "#00FFFF"];
 const paths = [
   "M0 64 L32 64 L16 0 Z",
   "M2 4 L26 52 L40 26 L38 4 Z",
@@ -98,10 +99,10 @@ function generateShapes() {
     createGradient(svg, id, stops);
   });
 
-  dots_grid = generateGrid(0.01, max_width, max_height, 50, keep_out_ele);
+  dots_grid = generateGrid(0.02, max_width, max_height, 50, keep_out_ele);
   dots_grid.forEach((pos) => {
     const radius = radi[getRandomNumber(0, radi.length)];
-    createCircle(svg, radius, pos, "#FFF");
+    createCircle(svg, radius, pos, colors[getRandomNumber(0, colors.length)]);
   });
 
   shapes_grid = generateGrid(
