@@ -9,6 +9,8 @@ body {
   width: 100%;
   margin: 0;
   overflow: hidden;
+  color: white;
+  font-family: monospace;
 }
 
 #background {
@@ -30,10 +32,7 @@ body {
   width: 880px;
 
   h1 {
-    color: white;
     font-size: 64px;
-    font-weight: 500;
-    font-family: monospace;
     margin: 0 0 25px 0;
     width: 75%;
 
@@ -42,36 +41,6 @@ body {
     }
     @media (max-width: $information-sm) {
       font-size: 25px;
-    }
-  }
-
-  .subtitle-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0 15px;
-    max-width: 888px;
-  
-    p {
-      color: white;
-      font-size: 24px;
-      font-family: monospace;
-      margin: 10px 0;
-
-      @media (max-width: $information-lg) {
-        font-size: 18px;
-      }
-      @media (max-width: $information-md) {
-        font-size: 15px;
-      }
-    }
-  
-    a {
-      color: #c2002f;
-      font-weight: bold;
-    }
-
-    @media (max-width: $information-sm) {
-      grid-template-columns: 1fr;
     }
   }
 
@@ -85,4 +54,40 @@ body {
   @media (max-width: $information-sm) {
     width: 400px;
   }
+}
+
+.subtitle-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 15px;
+  max-width: 888px;
+
+  p {
+    margin: 10px 0;
+    font-weight: bold;
+  }
+  @media (max-width: $information-sm) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.subtitle-text 
+{
+  font-size: 24px;
+
+  @media (max-width: $information-lg) {
+    font-size: 18px;
+  }
+  @media (max-width: $information-md) {
+    font-size: 15px;
+  }
+}
+
+.link-yellow {
+  color: yellow;
+  margin: 0 2% 0 0;
+}
+
+.link-ajax {
+  color: red;
 }
